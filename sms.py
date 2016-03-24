@@ -46,3 +46,31 @@ def get_ussd_inbox():
 		ussd_file.close()
 	else:
 		return False
+
+def get_sms_outbox():
+	'''
+	Возвращает исходящие смс сообщения как словарь вида
+	{'date': дата сообщения, 'number': номер получателя,'text': текст сообщения}
+	'''
+	return False
+
+def get_ussd_outbox():
+	'''
+	Возвращает исходящие ussd сообщения как словарь вида
+	{'date': дата сообщения,'channel':  GSM канал с которого пришло сообщение,'text': текст сообщения}
+	'''
+	return False
+
+def send_sms(channel='GSM1',number,text):
+	'''
+	Отправляет смс сообщение на указанный номер с указанного канала,
+	если сообщение было успешно отправлено возвращает True, иначе False
+	'''
+	return False
+
+def send_ussd(channel='GSM1',text):
+	'''
+	Отправляет ussd сообщение с указанного канала,
+	если сообщение было успешно отправлено возвращает True, иначе False
+	'''
+	return False
