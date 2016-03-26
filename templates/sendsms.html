@@ -20,12 +20,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Send sms</a>
+          <a class="navbar-brand" href="{{url_for('index')}}">Send sms</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Отправить</a></li>
-            <li><a href="#about">О программе</a></li>
+            <li class="active"><a href="{{url_for('send')}}">Отправить</a></li>
+            <li><a href="{{url_for('about')}}">О программе</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -34,9 +34,42 @@
     <div class="container">
 
       <div class="sendsms">
-        <h1>Send SMS python application for FreePBX!</h1>
 
- 	    <p>Hello,{{user.nickname}}</p>
+        <div class="row">
+
+        <div class="col-sm-4">
+         <a href="{{url_for('index',mes='sms_inbox')}}">SMS/... <span class="badge"></span></a><br>
+         <a href="{{url_for('index',mes='sms_inbox')}}">--Входящие <span class="badge">10</span></a><br>
+         <a href="{{url_for('index',mes='sms_outbox')}}">--Исходящие <span class="badge">2</span></a><br> 
+         <a href="{{url_for('index',mes='ussd_inbox')}}">USSD/... <span class="badge"></span></a><br>
+         <a href="{{url_for('index',mes='ussd_inbox')}}">--Входящие <span class="badge">10</span></a><br>
+         <a href="{{url_for('index',mes='ussd_outbox')}}">--Исходящие <span class="badge">2</span></a><br>
+        </div>  
+
+      <div class="col-sm-8">
+
+          <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Дата</th>
+                <th>Номер</th>
+                <th>Сообщение</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mes in messages%}
+            <tr>
+                <td>{{mes.date}}</td>
+                <td>{{mes.number}}</td>
+                <td>{{mes.text}}</td>
+            </tr>
+        {% endfor%}
+        </tbody>
+    </table>
+
+   </div>
+
+   </div> <!-- /.row -->
 
       </div>
 
